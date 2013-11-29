@@ -17,6 +17,7 @@ $radius: em(5);
 @mixin main-width {
   @include outer-container;
   max-width: 60em;
+  min-width: 60em;
 }
 
 body {
@@ -69,6 +70,7 @@ h1, h2, h3 {
 
   #what, #why {
     @include row;
+
     height: $box-height;
     vertical-align: middle;
 
@@ -91,9 +93,7 @@ h1, h2, h3 {
     div.arrow {
       @include transform(rotate(45deg));
 
-      position: relative;
-      top: 8.75em;
-      left: 12.25em;
+      @include position(8.75em 0 0 12.25em);
       width: 3em;
       height: 3em;
       background-color: $blue;
@@ -132,30 +132,29 @@ h1, h2, h3 {
   }
 }
 
-#first-waves {
-  position: relative;
-  top: -4em;
-  left: 1em;
-  height: 2.2em;
+@mixin wave-background {
   background-image: url(/images/Vlny.png);
   background-repeat: repeat-x;
   z-index: 1;
+  width: 100%;
+}
+
+#first-waves {
+  @include position(-4em 0 0 0);
+  height: 2.2em;
+  @include wave-background;
   opacity: 0.75;
 }
 
 #second-waves {
-  position: relative;
-  top: -7em;
+  @include position(-7em 0 0 0);
   height: 2.2em;
-  background-image: url(/images/Vlny.png);
-  background-repeat: repeat-x;
-  z-index: 1;
-  opacity: 0.9;
+  @include wave-background;
+  opacity: 0.95;
 }
 
 #ocean {
-  position: relative;
-  top: -4em;
+  @include position(-4em 0 0 0);
   height: 6em;
   background-color: $blue;
   opacity: 0.75;
@@ -163,10 +162,10 @@ h1, h2, h3 {
 
 #footer-row {
   background-color: $blue;
-  position: relative;
-  top: -7em;
+  @include position(-7em 0 0 0);
 
   footer {
+    @include main-width;
     @include outer-container;
     @include pad(2em 14em);
 
