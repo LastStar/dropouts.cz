@@ -28,3 +28,6 @@ gem "middleman-livereload", "~> 3.1.0"
 
 # Syntax highlighting
 gem "middleman-syntax"
+
+# JavaScript runtime
+gem 'therubyracer'
