@@ -1,0 +1,181 @@
+@import 'bourbon';
+@import 'neat';
+@import 'bitters';
+
+// colors
+$blue: rgb(62, 148, 224);
+$dark-blue: rgb(4, 34, 84);
+$light-blue: rgb(239, 244, 247);
+$white-blue: rgb(252, 253, 255);
+
+// measures
+$header-height: 108px;
+$box-height: 15em;
+$radius: em(5);
+
+
+@mixin main-width {
+  @include outer-container;
+  max-width: 60em;
+}
+
+body {
+  margin: 0px;
+  font-family: Botanika;
+}
+
+h1, h2, h3 {
+  font-family: Magion;
+}
+
+
+#header-row {
+  background-color: $dark-blue;
+  height: $header-height;
+
+  header {
+    @include outer-container;
+
+    #drops {
+      z-index: 20;
+      position: relative;
+      top: 2em;
+      left: 5.5em;
+      width: em(79);
+      height: em(117);
+      background-image: url(/images/Kapky.png);
+    }
+
+    h1.fn {
+      position: relative;
+      top: -1.5em;
+      left: 2.5em;
+      z-index: 1;
+      font-size: 4.5em;
+      color: $blue;
+    }
+  }
+}
+
+#main-content {
+  @include main-width;
+
+  position: relative;
+  background-color: $white-blue;
+  padding-bottom: 3em;
+  z-index: 10;
+  border-bottom-right-radius: $radius;
+  border-bottom-left-radius: $radius;
+
+  #what, #why {
+    @include row;
+    height: $box-height;
+    vertical-align: middle;
+
+    h2 {
+      @include span-columns(2);
+      @include shift(1);
+      @include omega;
+
+      position: relative;
+      background-color: $blue;
+      color: $white-blue;
+      height: 100%;
+      border-top-left-radius: $radius;
+      border-bottom-left-radius: $radius;
+      text-align: right;
+      padding: 3em 0.5em 0 0;
+      z-index: 5;
+    }
+
+    div.arrow {
+      @include transform(rotate(45deg));
+
+      position: relative;
+      top: 8.75em;
+      left: 12.25em;
+      width: 3em;
+      height: 3em;
+      background-color: $blue;
+      z-index: 1;
+    }
+
+    div.text {
+      @include span-columns(8);
+      @include omega;
+
+      background-color: $light-blue;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      padding: 2em 2em 2em 4em;
+      height: 100%;
+
+      strong {
+        font-family: Magion;
+      }
+
+    }
+  }
+
+  #why {
+    margin-top: 4em;
+
+    div.text {
+      padding-top: 2.5em;
+    }
+  }
+
+  #what {
+    div.text {
+      padding-top: 4em;
+    }
+  }
+}
+
+#first-waves {
+  position: relative;
+  top: -4em;
+  left: 1em;
+  height: 2.2em;
+  background-image: url(/images/Vlny.png);
+  background-repeat: repeat-x;
+  z-index: 1;
+  opacity: 0.75;
+}
+
+#second-waves {
+  position: relative;
+  top: -7em;
+  height: 2.2em;
+  background-image: url(/images/Vlny.png);
+  background-repeat: repeat-x;
+  z-index: 1;
+  opacity: 0.9;
+}
+
+#ocean {
+  position: relative;
+  top: -4em;
+  height: 6em;
+  background-color: $blue;
+  opacity: 0.75;
+}
+
+#footer-row {
+  background-color: $blue;
+  position: relative;
+  top: -7em;
+
+  footer {
+    @include outer-container;
+    @include pad(2em 14em);
+
+    color: $light-blue;
+    text-align: center;
+
+    h1 {
+      display: inline;
+      font-size: 1em;
+    }
+  }
+}
