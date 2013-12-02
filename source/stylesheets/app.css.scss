@@ -13,7 +13,11 @@ $header-height: 108px;
 $box-height: 15em;
 $radius: em(5);
 
+// fonts
+@include font-face(MagionRegular, "Magion_Regular", bold);
+@include font-face(BotanikaRegular, "Botanika_Regular", bold);
 
+// general styles
 @mixin main-width {
   @include outer-container;
   max-width: 60em;
@@ -22,14 +26,15 @@ $radius: em(5);
 
 body {
   margin: 0px;
-  font-family: Botanika;
+  font-family: BotanikaRegular;
 }
 
 h1, h2, h3 {
-  font-family: Magion;
+  font-family: MagionRegular;
 }
 
 
+// specific styles
 #header-row {
   background-color: $dark-blue;
   height: $header-height;
