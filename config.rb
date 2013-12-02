@@ -21,8 +21,6 @@ Slim::Engine.default_options[:format] = :html5
 # Ignores
 ignore '/calendar.html'
 
-
-
 ######################################################################
 # Development environment.
 ######################################################################
@@ -30,6 +28,7 @@ ignore '/calendar.html'
 configure :development do
   Slim::Engine.default_options[:pretty] = true
   activate :livereload
+  activate :directory_indexes
 end
 
 
