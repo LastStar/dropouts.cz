@@ -11,7 +11,7 @@ $white-blue: rgb(252, 253, 255);
 // measures
 $header-height: 108px;
 $box-height: 15em;
-$radius: em(5);
+$radius: 0.25em;
 
 // fonts
 @include font-face(MagionRegular, "Magion_Regular", bold);
@@ -36,6 +36,7 @@ h1, h2, h3 {
 
 // specific styles
 #header-row {
+  @inlude row;
   background-color: $dark-blue;
   height: $header-height;
 
@@ -58,7 +59,9 @@ h1, h2, h3 {
       left: 2.5em;
       z-index: 1;
       font-size: 4.5em;
-      color: $blue;
+      a {
+        color: $blue;
+      }
     }
 
     #chooser {
@@ -67,12 +70,17 @@ h1, h2, h3 {
       top: -9.5em;
       left: 55em;
       border: thin solid $white-blue;
-      background: $dark-blue;
       width: 8em;
       text-align: center;
+      @include pad(0.5em);
 
-      a {
+      select {
+        text-align: center;
+        margin: 0;
+        border: none;
         font-family: MagionRegular;
+        -webkit-appearance:none;
+        background: $dark-blue;
         color: $white-blue;
       }
     }
@@ -81,6 +89,7 @@ h1, h2, h3 {
 
 #main-content {
   @include main-width;
+  box-shadow: 0 0 0.2em 0.125em hsla(0, 0%, 0%, 0.15);
 
   position: relative;
   background-color: $white-blue;
@@ -94,41 +103,46 @@ h1, h2, h3 {
 
     height: $box-height;
     vertical-align: middle;
+    margin-top: 4em;
 
     h2 {
       @include span-columns(2);
-      @include shift(1);
+      @include shift;
       @include omega;
 
-      position: relative;
       background-color: $blue;
       color: $white-blue;
-      height: 100%;
       border-top-left-radius: $radius;
       border-bottom-left-radius: $radius;
       text-align: right;
-      padding: 3em 0.5em 0 0;
-      z-index: 5;
-    }
+      height: 100%;
+      padding: 3em 0.5em 0 1em;
 
-    div.arrow {
-      @include transform(rotate(45deg));
+      span.title {
+        @include position;
+        z-index: 5;
+      }
 
-      @include position(8.75em 0 0 12.25em);
-      width: 3em;
-      height: 3em;
-      background-color: $blue;
-      z-index: 1;
+      span.arrow {
+        @include transform(rotate(45deg));
+        @include position(-1.33em 0 0 1em);
+
+        display: inline-block;
+        width: 1.5em;
+        height: 1.5em;
+        background-color: $blue;
+        z-index: 1;
+        margin: 0;
+      }
     }
 
     div.text {
       @include span-columns(8);
-      @include omega;
+      @include pad(2em 2em 2em 4em);
 
       background-color: $light-blue;
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
-      padding: 2em 2em 2em 4em;
+      border-top-right-radius: $radius;
+      border-bottom-right-radius: $radius;
       height: 100%;
 
       strong {
@@ -138,10 +152,26 @@ h1, h2, h3 {
     }
   }
 
-  #why {
-    margin-top: 4em;
+  #general {
+    @include row;
 
+    margin-top: 2em;
+
+    div.text {
+      @include span-columns(9);
+      @include shift;
+      @include pad(2em 2em 2em 4em);
+    }
+
+    h1 {
+      margin-bottom: 0.66em;
+    }
+
+    ol li {
+      list-style-type: decimal;
+    }
   }
+
 
   &.project {
     #what {
@@ -166,7 +196,7 @@ h1, h2, h3 {
 
     #why {
       div.text {
-        padding-top: 2.33em;
+        padding-top: 3.25em;
       }
     }
   }
@@ -203,6 +233,7 @@ h1, h2, h3 {
 #footer-row {
   background-color: $blue;
   @include position(-7em 0 0 0);
+  border-bottom: 1em solid $dark-blue;
 
   footer {
     @include main-width;
@@ -212,9 +243,13 @@ h1, h2, h3 {
     color: $light-blue;
     text-align: center;
 
-    h1 {
-      display: inline;
-      font-size: 1em;
+    a {
+      color: $light-blue;
+
+      h1 {
+        display: inline;
+        font-size: 1em;
+      }
     }
 
     img {
