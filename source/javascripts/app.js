@@ -1,12 +1,7 @@
 $(function() {
-  var page = document.location
-  var sel = $("#pages")
+  $("#pages").val(document.location.pathname);
 
-  sel.val(page.pathname);
-
-
-
-  sel.bind("change", function() {
-    document.location = $(this).val()
+  $("#pages").bind("change", function() {
+    document.location = $(this).val();
   })
 });
