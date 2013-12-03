@@ -36,7 +36,7 @@ h1, h2, h3 {
 
 // specific styles
 #header-row {
-  @inlude row;
+  @include row;
   background-color: $dark-blue;
   height: $header-height;
 
