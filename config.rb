@@ -48,5 +48,6 @@ configure :build do
   #
   # Change to your Google Analytics key (e.g. UA-XXXXX-Y)
   # To disable GA, leave unset or set to nil
-  set :ga_key, nil
+  set :ga_key, 'UA-47158936-1'
+  set :ga_site, 'dropouts.cz'
 end
